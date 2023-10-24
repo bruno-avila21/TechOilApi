@@ -3,12 +3,12 @@ using TechOil.Repository;
 
 namespace TechOil.Services
 {
-    public class ProyectoService
+    public class ProyectoService : IProyectoService
     {
 
-       private readonly IProyectoRepository<Proyecto> _proyectoRepository;
+       private readonly IProyectoRepository _proyectoRepository;
 
-       public ProyectoService(IProyectoRepository<Proyecto> proyectoRepository)
+       public ProyectoService(IProyectoRepository proyectoRepository)
         {
             _proyectoRepository = proyectoRepository;
         }

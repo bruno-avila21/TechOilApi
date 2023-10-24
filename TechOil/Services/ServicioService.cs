@@ -3,12 +3,12 @@ using TechOil.Repository;
 
 namespace TechOil.Services
 {
-    public class ServicioService
+    public class ServicioService : IServicioService
     {
 
-        private readonly IServicioRepository<Servicio> _servicioRepository;
+        private readonly IServicioRepository _servicioRepository;
 
-        public ServicioService(IServicioRepository<Servicio> servicioRepository)
+        public ServicioService(IServicioRepository servicioRepository)
         {
             _servicioRepository = servicioRepository;
         }

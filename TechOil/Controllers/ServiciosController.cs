@@ -10,9 +10,9 @@ namespace TechOil.Controllers
     public class ServiciosController : ControllerBase
     {
 
-        private readonly ServicioService _servicioService;
+        private readonly IServicioService _servicioService;
 
-        public ServiciosController(ServicioService servicioService)
+        public ServiciosController(IServicioService servicioService)
         {
             _servicioService = servicioService;
         }

@@ -11,9 +11,9 @@ namespace TechOil.Controllers
         public class ProyectosController : ControllerBase
         {
 
-            private readonly ProyectoService _proyectoService;
+            private readonly IProyectoService _proyectoService;
 
-            public ProyectosController(ProyectoService proyectoService)
+            public ProyectosController(IProyectoService proyectoService)
             {
                 _proyectoService = proyectoService;
             }

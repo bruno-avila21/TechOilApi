@@ -3,7 +3,7 @@ using TechOil.Models;
 
 namespace TechOil.Repository
 {
-    public class ProyectoRepository : IProyectoRepository<Proyecto>
+    public class ProyectoRepository : IProyectoRepository
     {
         private readonly TechOilDbContext _dbContext;
 
