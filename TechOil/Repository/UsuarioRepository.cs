@@ -14,6 +14,12 @@ namespace TechOil.Repository
 
         public void AddUsuario(Usuario usuario)
         {
+            string salt = BCrypt.Net.BCrypt.GenerateSalt(12);
+
+            string hashedPassword= BCrypt.Net.BCrypt.HashPassword(usuario.contraseña, salt);
+
+            usuario.contraseña = hashedPassword;
+
             _dbContext.Usuarios.Add(usuario);
             _dbContext.SaveChanges();
         }
