@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TechOil.Models;
+using TechOil.Models.DTOs;
 using TechOil.Repository;
 using TechOil.Services;
 
@@ -11,22 +14,28 @@ namespace TechOil.Controllers
     {
 
         private readonly IServicioService _servicioService;
+        public readonly IMapper _mapper;
 
-        public ServiciosController(IServicioService servicioService)
+        public ServiciosController(IServicioService servicioService, IMapper mapper)
         {
             _servicioService = servicioService;
+            _mapper = mapper;
         }
 
         // GET: api/servicios
         [HttpGet]
+        [Authorize]
         public IActionResult Get()
         {
             var servicios = _servicioService.GetAll();
-            return Ok(servicios);
+
+            var serviciosDTO = _mapper.Map<List<ServicioDTO>>(servicios);
+            return Ok(serviciosDTO);
         }
 
         // GET api/servicios/{id}
         [HttpGet("{id}")]
+        [Authorize]
         public IActionResult Get(int id)
         {
             var servicio = _servicioService.GetById(id);
@@ -34,11 +43,13 @@ namespace TechOil.Controllers
             {
                 return NotFound();
             }
-            return Ok(servicio);
+            var servicioDTO = _mapper.Map<ServicioDTO>(servicio);
+            return Ok(servicioDTO);
         }
 
         // POST api/servicios
         [HttpPost]
+        [Authorize]
         public IActionResult Post(Servicio servicio)
         {
             _servicioService.Add(servicio);
@@ -47,6 +58,7 @@ namespace TechOil.Controllers
 
         // PUT api/servicios/{id}
         [HttpPut("{id}")]
+        [Authorize]
         public IActionResult Put(int id, Servicio updateServicio)
         {
             var servicio = _servicioService.GetById(id);
@@ -55,14 +67,16 @@ namespace TechOil.Controllers
                 return NotFound();
             }
             servicio.descr = updateServicio.descr;
-            servicio.estado = servicio.estado;
-            servicio.valorHora = servicio.valorHora;
+            servicio.estado = updateServicio.estado;
+            servicio.valorHora = updateServicio.valorHora;
+            _servicioService.Update(servicio);
 
             return NoContent();
         }
 
         // DELETE api/servicios/{id}
         [HttpDelete("{id}")]
+        [Authorize]
         public IActionResult Delete(int id)
         {
             var servicios = _servicioService.GetById(id);
