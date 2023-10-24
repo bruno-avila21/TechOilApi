@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TechOil.Models;
+using TechOil.Models.DTOs;
 using TechOil.Repository;
 using TechOil.Services;
 
@@ -11,22 +14,28 @@ namespace TechOil.Controllers
     {
 
         private readonly ITrabajoService _trabajoService;
+        public readonly IMapper _mapper;
 
-        public TrabajosController(ITrabajoService trabajoService)
+        public TrabajosController(ITrabajoService trabajoService, IMapper mapper)
         {
             _trabajoService = trabajoService;
+            _mapper = mapper;
         }
 
         // GET: api/trabajos
         [HttpGet]
+        [Authorize]
         public IActionResult Get()
         {
             var trabajos = _trabajoService.GetAll();
-            return Ok(trabajos);
+
+            var trabajosDTO = _mapper.Map<List<TrabajoDTO>>(trabajos);
+            return Ok(trabajosDTO);
         }
 
         // GET api/trabajos/{id}
         [HttpGet("{id}")]
+        [Authorize]
         public IActionResult Get(int id)
         {
             var trabajo = _trabajoService.GetById(id);
@@ -34,11 +43,14 @@ namespace TechOil.Controllers
             {
                 return NotFound();
             }
-            return Ok(trabajo);
+
+            var trabajoDTO = _mapper.Map<TrabajoDTO>(trabajo);
+            return Ok(trabajoDTO);
         }
 
         // POST api/trabajos
         [HttpPost]
+        [Authorize]
         public IActionResult Post(Trabajo trabajo)
         {
             _trabajoService.Add(trabajo);
@@ -47,6 +59,7 @@ namespace TechOil.Controllers
 
         // PUT api/trabajos/{id}
         [HttpPut("{id}")]
+        [Authorize]
         public IActionResult Put(int id, Trabajo updateTrabajo)
         {
             var trabajo = _trabajoService.GetById(id);
@@ -61,6 +74,7 @@ namespace TechOil.Controllers
 
         // DELETE api/trabajos/{id}
         [HttpDelete("{id}")]
+        [Authorize]
         public IActionResult Delete(int id)
         {
             var trabajo = _trabajoService.GetById(id);

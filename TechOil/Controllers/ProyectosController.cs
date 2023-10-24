@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TechOil.Models;
 using TechOil.Models.DTOs;
 using TechOil.Repository;
@@ -12,30 +14,29 @@ namespace TechOil.Controllers
         {
 
             private readonly IProyectoService _proyectoService;
+            public readonly IMapper _mapper;
 
-            public ProyectosController(IProyectoService proyectoService)
+            public ProyectosController(IProyectoService proyectoService, IMapper mapper)
             {
                 _proyectoService = proyectoService;
+                _mapper = mapper;
             }
 
             // GET: api/proyectos
             [HttpGet]
+            [Authorize]
             public IActionResult GetProyectos()
             {
                 var proyectos = _proyectoService.GetAll();
 
-                var proyectosDTO = proyectos.Select(proyecto => new ProyectoDTO
-                {
-                codProyecto = proyecto.codProyecto,
-                nombre = proyecto.nombre,
-                direccion = proyecto.direccion
-                 }).ToList();
+                var proyectosDTO = _mapper.Map<List<ProyectoDTO>>(proyectos);
 
                 return Ok(proyectosDTO);
             }
 
             // GET api/proyectos/{id}
             [HttpGet("{id}")]
+            [Authorize]
             public IActionResult Get(int id)
             {
                 var proyecto = _proyectoService.GetById(id);
@@ -43,12 +44,15 @@ namespace TechOil.Controllers
                 {
                     return NotFound();
                 }
-                return Ok(proyecto);
+            var proyectoDTO = _mapper.Map<ProyectoDTO>(proyecto);
+
+                return Ok(proyectoDTO);
             }
 
             // POST api/proyectos
             [HttpPost]
-            public IActionResult Post(Proyecto proyecto)
+            [Authorize]
+        public IActionResult Post(Proyecto proyecto)
             {
                 _proyectoService.Add(proyecto);
                 return CreatedAtAction(nameof(Get), new { id = proyecto.codProyecto }, proyecto);
@@ -56,7 +60,8 @@ namespace TechOil.Controllers
 
             // PUT api/proyectos/{id}
             [HttpPut("{id}")]
-            public IActionResult Put(int id, Proyecto updatedProyecto)
+            [Authorize]
+        public IActionResult Put(int id, Proyecto updatedProyecto)
             {
                 var proyecto = _proyectoService.GetById(id);
                 if (proyecto == null)
@@ -72,7 +77,8 @@ namespace TechOil.Controllers
 
             // DELETE api/proyectos/{id}
             [HttpDelete("{id}")]
-            public IActionResult Delete(int id)
+            [Authorize]
+        public IActionResult Delete(int id)
             {
                 var proyecto = _proyectoService.GetById(id);
                 if (proyecto == null)
