@@ -2,7 +2,7 @@
 
 namespace TechOil.Repository
 {
-    public interface ITrabajoRepository<Trabajo>
+    public interface ITrabajoRepository
     {
         IEnumerable<Trabajo> GetAllTrabajos();
         Trabajo GetTrabajoById(int id);

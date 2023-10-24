@@ -2,7 +2,7 @@
 
 namespace TechOil.Repository
 {
-    public interface IServicioRepository<Servicio>
+    public interface IServicioRepository
     {
         IEnumerable<Servicio> GetAllServicos();
         Servicio GetServicioById(int id);

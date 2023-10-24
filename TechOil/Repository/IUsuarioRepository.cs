@@ -2,7 +2,7 @@
 
 namespace TechOil.Repository
 {
-    public interface IUsuarioRepository<Usuario>
+    public interface IUsuarioRepository
     {
         IEnumerable<Usuario> GetAllUsuarios();
         Usuario GetUsuarioById(int id);

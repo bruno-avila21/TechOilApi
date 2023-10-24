@@ -9,5 +9,12 @@ namespace TechOil.Models
         public int dni { get; set; }
         public int tipo { get; set; }
         public string contraseña { get; set; }
+    
+        public Usuario(string nombre, string contraseña)
+        {
+            this.nombre = nombre;
+            this.contraseña = contraseña;
+        }
+
     }
 }

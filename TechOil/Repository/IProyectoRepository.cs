@@ -2,7 +2,7 @@
 
 namespace TechOil.Repository
 {
-    public interface IProyectoRepository<Proyecto>
+    public interface IProyectoRepository
     {
         IEnumerable<Proyecto> GetAllProyectos();
         Proyecto GetProyectoById(int id);

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TechOil.Models;
 using TechOil.Repository;
 using TechOil.Services;
@@ -10,15 +11,16 @@ namespace TechOil.Controllers
     public class UsuariosController : ControllerBase
     {
 
-        private readonly UsuarioService _usuarioService;
+        private readonly IUsuarioService _usuarioService;
 
-        public UsuariosController(UsuarioService usuarioService)
+        public UsuariosController(IUsuarioService usuarioService)
         {
             _usuarioService = usuarioService;
         }
 
         // GET: api/usuarios
         [HttpGet]
+        [Authorize]
         public IActionResult Get()
         {
             var usuarios = _usuarioService.GetAll();
