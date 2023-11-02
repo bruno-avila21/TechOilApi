@@ -1,0 +1,75 @@
+﻿@page "/Proyectos"
+@model TechOilFront.Pages.ProyectosModel
+@{
+    ViewData["Title"] = "Proyectos";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>@ViewData["Title"]</h1>
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Ingresar ID" aria-label="Ingresar ID" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button">Buscar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <form method="post">
+                <div class="container" style="padding:15px">
+                    <div class="form-group">
+                        <label asp-for="proyecto.nombre">Nombre</label>
+                        <input asp-for="proyecto.nombre" class="form-control" name="nombre" placeholder="Ingrese el nombre del Proyecto">
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="proyecto.direccion">Direccion</label>
+                        <input asp-for="proyecto.direccion" class="form-control" name="direccion" placeholder="Ingrese la direccion del proyecto">
+                    </div>
+                    <div class="form-group mt-2">
+                        <button asp-page-handler="post" type="submit" class="btn btn-primary">Crear</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        <div class="col-8">
+            <form method="post">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Cod Proyecto</th>
+                            <th>Nombre</th>
+                            <th>Direccion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.proyectoList)
+                        {
+                            <tr>
+                                <th>@item.codProyecto</th>
+                                <th>@item.nombre</th>
+                                <th>@item.direccion</th>
+                                <th>
+                                    <button asp-page-handler="Delete" asp-route-id="@item.codProyecto" class="btn btn-danger" onclick="return confirm('Esta seguro de borrar el proyecto?')">Borrar</button>
+                                    <button class="btn btn-primary" onclick="mostrarFormulario()">Modificar</button>
+                                </th>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </form>
+
+        </div>
+    </div>
+</div>
+

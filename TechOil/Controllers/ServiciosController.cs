@@ -24,7 +24,7 @@ namespace TechOil.Controllers
 
         // GET: api/servicios
         [HttpGet]
-        [Authorize]
+        
         public IActionResult Get()
         {
             var servicios = _servicioService.GetAll();
@@ -49,7 +49,7 @@ namespace TechOil.Controllers
 
         // POST api/servicios
         [HttpPost]
-        [Authorize]
+        //[Authorize]
         public IActionResult Post(Servicio servicio)
         {
             _servicioService.Add(servicio);
@@ -76,7 +76,7 @@ namespace TechOil.Controllers
 
         // DELETE api/servicios/{id}
         [HttpDelete("{id}")]
-        [Authorize]
+       // [Authorize]
         public IActionResult Delete(int id)
         {
             var servicios = _servicioService.GetById(id);

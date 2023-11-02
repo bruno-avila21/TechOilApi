@@ -23,8 +23,7 @@ namespace TechOil.Controllers
             }
 
             // GET: api/proyectos
-            [HttpGet]
-            [Authorize]
+            [HttpGet] 
             public IActionResult GetProyectos()
             {
                 var proyectos = _proyectoService.GetAll();
@@ -51,7 +50,7 @@ namespace TechOil.Controllers
 
             // POST api/proyectos
             [HttpPost]
-            [Authorize]
+        //    [Authorize]
         public IActionResult Post(Proyecto proyecto)
             {
                 _proyectoService.Add(proyecto);
@@ -77,7 +76,7 @@ namespace TechOil.Controllers
 
             // DELETE api/proyectos/{id}
             [HttpDelete("{id}")]
-            [Authorize]
+         //   [Authorize]
         public IActionResult Delete(int id)
             {
                 var proyecto = _proyectoService.GetById(id);
