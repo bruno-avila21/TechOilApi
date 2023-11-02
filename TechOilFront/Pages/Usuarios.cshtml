@@ -1,0 +1,110 @@
+﻿@page "/Usuarios"
+@model TechOilFront.Pages.UsuariosModel
+@{
+    ViewData["Title"] = "Usuarios";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>@ViewData["Title"]</h1>
+        </div>
+        <div class="col">
+            
+        </div>
+        <div class="col">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="inputSearch" placeholder="Ingresar ID" aria-label="Ingresar ID" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <i class="bi bi-search"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <form method="post">
+                    <div class="container" style="padding:15px">
+                        <div class="form-group">
+                                    <label asp-for="usuario.nombre">Nombre</label>
+                                    <input asp-for="usuario.nombre" class="form-control" id="nombreID" name="nombre" aria-describedby="emailHelp" placeholder="Ingrese el nombre">
+                        </div>
+                        <div class="form-group">
+                                    <label asp-for="usuario.dni">DNI</label>
+                                    <input asp-for="usuario.dni" class="form-control" id="dniID" name="dni" placeholder="DNI">
+                    </div>
+                        <div class="form-group">
+                                    <label asp-for="usuario.contraseña">Contraseña</label>
+                                    <input asp-for="usuario.contraseña" class="form-control" id="contraseñaID" name="contraseña" placeholder="Contraseña">
+                        </div>
+                    <div class="form-group mt-2">
+                        <button asp-page-handler="post" type="submit" class="btn btn-primary">Crear</button>
+                        </div>
+                        
+                    </div>    
+            </form>
+        </div>
+        <div class="col-8">
+            <form method="post">
+                <table class="table" id="tabla_Usuario">
+                    <thead>
+                        <tr>
+                            <th>CodUsuario</th>
+                            <th>Nombre</th>
+                            <th>Dni</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.usuarioList)
+                        {
+                            <tr class="listado">
+                                <th id="codUsuario">@item.codUsuario</th>
+                                <th id="nombre">@item.nombre</th>
+                                <th id="dni">@item.dni</th>
+                                <th>
+                                    <button asp-page-handler="Delete" asp-route-id="@item.codUsuario" class="btn btn-danger" onclick="return confirm('Esta seguro de borrar el usuario?')">Borrar</button>
+                                    <button class="btn btn-primary" onclick="mostrarFormulario()">Modificar</button>
+                                </th>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="d-flex align-content-center justify-content-center">
+        <form id="mostrar" style="display: none;">
+            <div>
+                <form method="post">
+                    <div class="container" style="padding:15px">
+                        <div class="form-group">
+                            <label>Nombre</label>
+                            <input class="form-control" aria-describedby="emailHelp" placeholder="Ingrese el nombre">
+                        </div>
+                        <div class="form-group">
+                            <label >DNI</label>
+                            <input class="form-control" placeholder="DNI">
+                        </div>
+                        <div class="form-group">
+                            <label >Contraseña</label>
+                            <input  class="form-control" placeholder="Contraseña">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success" onclick="mostrarFormulario()">Modificar</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </form>
+    </div>
+</div>
+

@@ -1,0 +1,74 @@
+﻿@page "/Servicios"
+@model TechOilFront.Pages.ServiciosModel
+@{
+    ViewData["Title"] = "Servicios";
+}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>@ViewData["Title"]</h1>
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Ingresar ID" aria-label="Ingresar ID" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button">Buscar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <form method="post">
+                <div class="container" style="padding:15px">
+                    <div class="form-group">
+                        <label asp-for="servicio.descr">Descripcion del servicio</label>
+                        <input asp-for="servicio.descr" class="form-control" name="descr" placeholder="Ingrese la descripcion del Servicio">
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="servicio.valorHora">Valor de las Horas</label>
+                        <input asp-for="servicio.valorHora" class="form-control" name="valorHora" placeholder="Ingrese el valor de las horas">
+                    </div>
+                    <div class="form-group mt-2">
+                        <button asp-page-handler="post" type="submit" class="btn btn-primary">Crear</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        <div class="col-8">
+            <form method="post">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>CodServicio</th>
+                            <th>Descripcion</th>
+                            <th>Valor de Hora</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.servicioList)
+                        {
+                            <tr>
+                                <th>@item.codServicio</th>
+                                <th>@item.descr</th>
+                                <th>@item.valorHora</th>
+                                <th>
+                                    <button asp-page-handler="Delete" asp-route-id="@item.codServicio" class="btn btn-danger" onclick="return confirm('Esta seguro de borrar el servicio?')">Borrar</button>
+                                    <button class="btn btn-primary" onclick="mostrarFormulario()">Modificar</button>
+                                </th>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </form>
+
+        </div>
+    </div>
+</div>

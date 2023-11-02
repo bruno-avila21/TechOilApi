@@ -25,7 +25,7 @@ namespace TechOil.Controllers
 
         // GET: api/usuarios
         [HttpGet]
-        [Authorize]
+       // [Authorize]
         public IActionResult Get()
         {
             var usuarios = _usuarioService.GetAll();
@@ -52,7 +52,7 @@ namespace TechOil.Controllers
 
         // POST api/usuarios
         [HttpPost]
-        [Authorize]
+        //[Authorize]
         public IActionResult Post(Usuario usuario)
         {
             _usuarioService.Add(usuario);
@@ -81,7 +81,7 @@ namespace TechOil.Controllers
 
         // DELETE api/usuarios/{id}
         [HttpDelete("{id}")]
-        [Authorize]
+        //[Authorize]
         public IActionResult Delete(int id)
         {
             var usuario = _usuarioService.GetById(id);

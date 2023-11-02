@@ -1,0 +1,77 @@
+﻿@page "/Trabajos"
+@model TechOilFront.Pages.TrabajosModel
+@{
+    ViewData["Title"] = "Trabajos";
+}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>@ViewData["Title"]</h1>
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Ingresar ID" aria-label="Ingresar ID" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button">Buscar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <form method="post">
+                <div class="container" style="padding:15px">
+                    <div class="form-group">
+                        <label asp-for="trabajo.codProyecto">Codigo Proyecto</label>
+                        <input asp-for="trabajo.codProyecto" class="form-control"  name="codProyecto" placeholder="Ingrese el codigo de Proyecto">
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="trabajo.codServicio">Codigo Servicio</label>
+                        <input asp-for="trabajo.codServicio" class="form-control" name="codServicio" placeholder="Ingrese el codigo de Servicio">
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="trabajo.cantHoras">Cantidad de Horas</label>
+                        <input asp-for="trabajo.cantHoras" class="form-control" name="cantHoras" placeholder="Ingrese la cantidad de horas">
+                    </div>
+                    <div class="form-group mt-2">
+                        <button asp-page-handler="post" type="submit" class="btn btn-primary">Crear</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        <div class="col-8">
+            <form method="post">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>CodTrabajo</th>
+                            <th>CodProyecto</th>
+                            <th>CodServicio</th>
+                            <th>Cantidad de Horas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.trabajoList)
+                        {
+                            <tr>
+                                <th>@item.codTrabajo</th>
+                                <th>@item.codProyecto</th>
+                                <th>@item.codServicio</th>
+                                <th>@item.cantHoras</th>
+                                <th>
+                                    <button asp-page-handler="Delete" asp-route-id="@item.codTrabajo" class="btn btn-danger" onclick="return confirm('Esta seguro de borrar el trabajo?')">Borrar</button>
+                                    <button class="btn btn-primary" onclick="mostrarFormulario()">Modificar</button>
+                                </th>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </form>
+           
+        </div>
