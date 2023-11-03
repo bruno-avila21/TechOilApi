@@ -6,6 +6,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using TechOil.Models;
+using TechOil.Repository;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -17,6 +18,7 @@ namespace TechOil.Controllers
     {
 
         IConfiguration configuration;
+        private readonly IUsuarioRepository _usuariosRepository;
         public AuthController(IConfiguration configuration)
         {
             this.configuration = configuration;
@@ -32,7 +34,7 @@ namespace TechOil.Controllers
 
             if(usuario != null)
             {
-                if(usuario.nombre.Equals("test@email.com") && usuario.contraseña.Equals("a"))
+                if(usuario.nombre.Equals("Bruno") && usuario.contraseña.Equals("123"))
                 {
                     var issuer = configuration["Jwt:Issuer"];
                     var audience = configuration["Jwt:Audience"];

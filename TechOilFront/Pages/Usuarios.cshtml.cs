@@ -80,6 +80,40 @@ namespace TechOilFront.Pages
             }
         }
 
-      
+        public async Task<IActionResult> OnPostPut()
+        {
+            string codUsuario= Request.Form["codUsuario"];
+            string nombre = Request.Form["nombre"];
+            string dni = Request.Form["dni"];
+            string contraseña = Request.Form["contraseña"];
+
+            var data = new
+            {
+                codUsuario= codUsuario,
+                nombre = nombre,
+                dni = dni,
+                contraseña = contraseña
+
+            };
+
+            var content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
+
+            using (var httpClient = new HttpClient())
+            {
+                var response = await httpClient.PutAsync("http://localhost:5170/api/Usuarios\r\n", content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    await OnGetAsync();
+                    return Page();
+                }
+                else
+                {
+                    return Page();
+                }
+            }
+        }
+
+
     }
 }

@@ -25,22 +25,50 @@
 <div class="container">
     <div class="row">
         <div class="col-4">
-            <form method="post">
-                <div class="container" style="padding:15px">
-                    <div class="form-group">
-                        <label asp-for="servicio.descr">Descripcion del servicio</label>
-                        <input asp-for="servicio.descr" class="form-control" name="descr" placeholder="Ingrese la descripcion del Servicio">
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="servicio.valorHora">Valor de las Horas</label>
-                        <input asp-for="servicio.valorHora" class="form-control" name="valorHora" placeholder="Ingrese el valor de las horas">
-                    </div>
-                    <div class="form-group mt-2">
-                        <button asp-page-handler="post" type="submit" class="btn btn-primary">Crear</button>
-                    </div>
+            <div>
+                <div>
+                    <form method="post">
+                        <div class="container" style="padding:15px">
+                            <div class="form-group">
+                                <label asp-for="servicio.descr">Descripcion del servicio</label>
+                                <input asp-for="servicio.descr" class="form-control" name="descr" placeholder="Ingrese la descripcion del Servicio">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="servicio.valorHora">Valor de las Horas</label>
+                                <input asp-for="servicio.valorHora" class="form-control" name="valorHora" placeholder="Ingrese el valor de las horas">
+                            </div>
+                            <div class="form-group mt-2">
+                                <button asp-page-handler="post" type="submit" class="btn btn-primary">Crear</button>
+                            </div>
 
+                        </div>
+                    </form>
                 </div>
-            </form>
+                <div>
+                        <form method="post">
+                            <div class="container" style="padding:15px">
+                                <div class="form-group">
+                                    <label asp-for="servicio.codServicio">Seleccionar codServicio</label>
+                                    <input asp-for="servicio.codServicio" name="codServicio" class="form-control" aria-describedby="emailHelp" placeholder="Ingrese el cod de Servicio">
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="servicio.descr">Descripcion</label>
+                                    <input asp-for="servicio.descr" name="descr" class="form-control" aria-describedby="emailHelp" placeholder="Ingrese la descripcion del servicio">
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="servicio.valorHora">Valor de la hora</label>
+                                    <input asp-for="servicio.valorHora" name="valorHora" class="form-control" placeholder="Ingrese el valor de la hora">
+                                </div>
+
+                                <div class="form-group mt-2">
+                                    <button asp-page-handler="Put" type="submit" class="btn btn-success">Modificar</button>
+                                </div>
+
+                            </div>
+                        </form>
+                </div>
+            </div>
+            
         </div>
         <div class="col-8">
             <form method="post">
@@ -72,3 +100,5 @@
         </div>
     </div>
 </div>
+
+
