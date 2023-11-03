@@ -56,16 +56,18 @@ namespace TechOil.Controllers
             return CreatedAtAction(nameof(Get), new { id = trabajo.codTrabajo }, trabajo);
         }
 
-        // PUT api/trabajos/{id}
-        [HttpPut("{id}")]
-        [Authorize]
-        public IActionResult Put(int id, Trabajo updateTrabajo)
+        // PUT api/trabajos
+        [HttpPut]
+        //[Authorize]
+        public IActionResult Put(Trabajo updateTrabajo)
         {
-            var trabajo = _trabajoService.GetById(id);
+            var trabajo = _trabajoService.GetById(updateTrabajo.codTrabajo);
             if (trabajo == null)
             {
                 return NotFound();
             }
+            trabajo.codProyecto = updateTrabajo.codProyecto;
+            trabajo.codServicio = updateTrabajo.codServicio;
             trabajo.cantHoras = updateTrabajo.cantHoras;
             _trabajoService.Update(trabajo);
             return NoContent();

@@ -27,26 +27,56 @@
 <div class="container">
     <div class="row">
         <div class="col-4">
-            <form method="post">
+            <div>
+                <form method="post">
                     <div class="container" style="padding:15px">
                         <div class="form-group">
-                                    <label asp-for="usuario.nombre">Nombre</label>
-                                    <input asp-for="usuario.nombre" class="form-control" id="nombreID" name="nombre" aria-describedby="emailHelp" placeholder="Ingrese el nombre">
+                            <label asp-for="usuario.nombre">Nombre</label>
+                            <input asp-for="usuario.nombre" class="form-control" id="nombreID" name="nombre" aria-describedby="emailHelp" placeholder="Ingrese el nombre">
                         </div>
                         <div class="form-group">
-                                    <label asp-for="usuario.dni">DNI</label>
-                                    <input asp-for="usuario.dni" class="form-control" id="dniID" name="dni" placeholder="DNI">
+                            <label asp-for="usuario.dni">DNI</label>
+                            <input asp-for="usuario.dni" class="form-control" id="dniID" name="dni" placeholder="DNI">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="usuario.contraseña">Contraseña</label>
+                            <input asp-for="usuario.contraseña" class="form-control" id="contraseñaID" name="contraseña" placeholder="Contraseña">
+                        </div>
+                        <div class="form-group mt-2">
+                            <button asp-page-handler="post" type="submit" class="btn btn-primary">Crear</button>
+                        </div>
+
                     </div>
+                </form>
+            </div>
+
+            <div>
+                <form method="post">
+                    <div class="container" style="padding:15px">
                         <div class="form-group">
-                                    <label asp-for="usuario.contraseña">Contraseña</label>
-                                    <input asp-for="usuario.contraseña" class="form-control" id="contraseñaID" name="contraseña" placeholder="Contraseña">
+                            <label asp-for="usuario.codUsuario">Seleccionar codUsuario</label>
+                            <input asp-for="usuario.codUsuario" name="codUsuario" class="form-control" aria-describedby="emailHelp" placeholder="Ingrese el cod de Usuario">
                         </div>
-                    <div class="form-group mt-2">
-                        <button asp-page-handler="post" type="submit" class="btn btn-primary">Crear</button>
+                        <div class="form-group">
+                            <label asp-for="usuario.nombre">Nombre</label>
+                            <input asp-for="usuario.nombre" name="nombre" class="form-control" aria-describedby="emailHelp" placeholder="Ingrese el nombre">
                         </div>
-                        
-                    </div>    
-            </form>
+                        <div class="form-group">
+                            <label asp-for="usuario.dni">DNI</label>
+                            <input asp-for="usuario.dni" name="dni" class="form-control" placeholder="DNI">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="usuario.contraseña">Contraseña</label>
+                            <input asp-for="usuario.contraseña" name="contraseña" class="form-control" placeholder="Contraseña">
+                        </div>
+                        <div class="form-group mt-2">
+                            <button asp-page-handler="Put" type="submit" class="btn btn-success">Modificar</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+            
         </div>
         <div class="col-8">
             <form method="post">
@@ -78,33 +108,3 @@
         </div>
     </div>
 </div>
-
-<div class="container">
-    <div class="d-flex align-content-center justify-content-center">
-        <form id="mostrar" style="display: none;">
-            <div>
-                <form method="post">
-                    <div class="container" style="padding:15px">
-                        <div class="form-group">
-                            <label>Nombre</label>
-                            <input class="form-control" aria-describedby="emailHelp" placeholder="Ingrese el nombre">
-                        </div>
-                        <div class="form-group">
-                            <label >DNI</label>
-                            <input class="form-control" placeholder="DNI">
-                        </div>
-                        <div class="form-group">
-                            <label >Contraseña</label>
-                            <input  class="form-control" placeholder="Contraseña">
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-success" onclick="mostrarFormulario()">Modificar</button>
-                        </div>
-
-                    </div>
-                </form>
-            </div>
-        </form>
-    </div>
-</div>
-

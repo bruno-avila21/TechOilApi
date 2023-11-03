@@ -1,0 +1,27 @@
+﻿@page "/Login"
+@model TechOilFront.Pages.LoginModel
+@{
+
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="text-center">Inicio de Sesión</h2>
+            <form method="post">
+                <div class="form-group">
+                    <label asp-for="usuario.usuario.nombre">Usuario:</label>
+                    <input asp-for="usuario.usuario.nombre" name="nombre" type="text" class="form-control" id="username" placeholder="Nombre de usuario">
+                </div>
+                <div class="form-group">
+                    <label asp-for="usuario.usuario.contraseña">Contraseña:</label>
+                    <input asp-for="usuario.usuario.contraseña" type="password" name="contraseña" class="form-control" id="password" placeholder="Contraseña">
+                </div >
+                <div class="mt-2">
+                    <button asp-handler="post" type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

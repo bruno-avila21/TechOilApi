@@ -59,12 +59,12 @@ namespace TechOil.Controllers
             return CreatedAtAction(nameof(Get), new { id = usuario.codUsuario }, usuario);
         }
 
-        // PUT api/usuarios/{id}
-        [HttpPut("{id}")]
-        [Authorize]
-        public IActionResult Put(int id, Usuario updateUsuario)
+        // PUT api/usuarios
+        [HttpPut]
+       // [Authorize]
+        public IActionResult Put(Usuario updateUsuario)
         {
-            var usuario = _usuarioService.GetById(id);
+            var usuario = _usuarioService.GetById(updateUsuario.codUsuario);
             if (usuario == null)
             {
                 return NotFound();

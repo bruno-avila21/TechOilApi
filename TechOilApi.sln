@@ -5,7 +5,7 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechOil", "TechOil\TechOil.csproj", "{A21B5E11-63A2-4FE4-AD70-6EDB41213AE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechOilFront", "TechOilFront\TechOilFront.csproj", "{9019A88A-8AA4-4C14-9C2F-0DFC0D18D2A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechOilFront", "TechOilFront\TechOilFront.csproj", "{9019A88A-8AA4-4C14-9C2F-0DFC0D18D2A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

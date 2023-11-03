@@ -24,26 +24,56 @@
 <div class="container">
     <div class="row">
         <div class="col-4">
-            <form method="post">
-                <div class="container" style="padding:15px">
-                    <div class="form-group">
-                        <label asp-for="trabajo.codProyecto">Codigo Proyecto</label>
-                        <input asp-for="trabajo.codProyecto" class="form-control"  name="codProyecto" placeholder="Ingrese el codigo de Proyecto">
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="trabajo.codServicio">Codigo Servicio</label>
-                        <input asp-for="trabajo.codServicio" class="form-control" name="codServicio" placeholder="Ingrese el codigo de Servicio">
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="trabajo.cantHoras">Cantidad de Horas</label>
-                        <input asp-for="trabajo.cantHoras" class="form-control" name="cantHoras" placeholder="Ingrese la cantidad de horas">
-                    </div>
-                    <div class="form-group mt-2">
-                        <button asp-page-handler="post" type="submit" class="btn btn-primary">Crear</button>
-                    </div>
+            <div>
+                <form method="post">
+                    <div class="container" style="padding:15px">
+                        <div class="form-group">
+                            <label asp-for="trabajo.codProyecto">Codigo Proyecto</label>
+                            <input asp-for="trabajo.codProyecto" class="form-control" name="codProyecto" placeholder="Ingrese el codigo de Proyecto">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="trabajo.codServicio">Codigo Servicio</label>
+                            <input asp-for="trabajo.codServicio" class="form-control" name="codServicio" placeholder="Ingrese el codigo de Servicio">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="trabajo.cantHoras">Cantidad de Horas</label>
+                            <input asp-for="trabajo.cantHoras" class="form-control" name="cantHoras" placeholder="Ingrese la cantidad de horas">
+                        </div>
+                        <div class="form-group mt-2">
+                            <button asp-page-handler="post" type="submit" class="btn btn-primary">Crear</button>
+                        </div>
 
-                </div>
-            </form>
+                    </div>
+                </form>
+            </div>
+
+            <div>
+                <form method="post">
+                    <div class="container" style="padding:15px">
+                        <div class="form-group">
+                            <label asp-for="trabajo.codTrabajo">Seleccionar codTrabajo</label>
+                            <input asp-for="trabajo.codTrabajo" name="codTrabajo" class="form-control" aria-describedby="emailHelp" placeholder="Ingrese el cod de Trabajo">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="trabajo.codProyecto">codProyecto</label>
+                            <input asp-for="trabajo.codProyecto" name="codProyecto" class="form-control" aria-describedby="emailHelp" placeholder="Ingrese el cod de Proyecto">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="trabajo.codServicio">codServicio</label>
+                            <input asp-for="trabajo.codServicio" name="codServicio" class="form-control" placeholder="Ingrese cod de Servicio">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="trabajo.cantHoras">cantHoras</label>
+                            <input asp-for="trabajo.cantHoras" name="cantHoras" class="form-control" placeholder="Ingrese la cantidad de Horas">
+                        </div>
+                        <div class="form-group mt-2">
+                            <button asp-page-handler="Put" type="submit" class="btn btn-success">Modificar</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+            
         </div>
         <div class="col-8">
             <form method="post">
@@ -75,3 +105,6 @@
             </form>
            
         </div>
+
+
+       

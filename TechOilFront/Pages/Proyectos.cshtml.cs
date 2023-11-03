@@ -77,5 +77,37 @@ namespace TechOilFront.Pages
                 }
             }
         }
+
+        public async Task<IActionResult> OnPostPut()
+        {
+            string codProyecto = Request.Form["codProyecto"];
+            string nombre = Request.Form["nombre"];
+            string direccion = Request.Form["direccion"];
+
+            var data = new
+            {
+                codProyecto = codProyecto,
+                nombre = nombre,
+                direccion = direccion
+
+            };
+
+            var content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
+
+            using (var httpClient = new HttpClient())
+            {
+                var response = await httpClient.PutAsync("http://localhost:5170/api/Proyectos\r\n", content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    await OnGetAsync();
+                    return Page();
+                }
+                else
+                {
+                    return Page();
+                }
+            }
+        }
     }
 }

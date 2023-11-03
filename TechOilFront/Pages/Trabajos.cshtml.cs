@@ -79,5 +79,39 @@ namespace TechOilFront.Pages
                 }
             }
         }
+
+        public async Task<IActionResult> OnPostPut()
+        {
+            string codTrabajo = Request.Form["codTrabajo"];
+            string codProyecto = Request.Form["codProyecto"];
+            string codServicio = Request.Form["codServicio"];
+            string cantHoras = Request.Form["cantHoras"];
+
+            var data = new
+            {
+                codTrabajo = codTrabajo,
+                codProyecto = codProyecto,
+                codServicio = codServicio,
+                cantHoras = cantHoras
+
+            };
+
+            var content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
+
+            using (var httpClient = new HttpClient())
+            {
+                var response = await httpClient.PutAsync("http://localhost:5170/api/Trabajos\r\n", content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    await OnGetAsync();
+                    return Page();
+                }
+                else
+                {
+                    return Page();
+                }
+            }
+        }
     }
 }
